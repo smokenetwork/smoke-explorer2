@@ -1,5 +1,7 @@
 import React, {Component} from 'react';
+import {withRouter} from 'react-router'
 import {Switch, Route, Redirect} from 'react-router-dom';
+import {connect} from 'react-redux';
 import Header from "./components/Header";
 import Footer from "./components/Footer";
 import Dashboard from "./components/Dashboard";
@@ -27,4 +29,14 @@ class App extends Component {
   }
 }
 
-export default App;
+export default withRouter(connect(
+  (state, ownProps) => {
+    return {
+      ...ownProps,
+      ...state.app
+    };
+  },
+  {
+  }
+)(App));
+
