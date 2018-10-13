@@ -1,5 +1,4 @@
 import React, {Component} from 'react';
-import {Link} from 'react-router-dom';
 
 class Header extends Component {
   render() {
@@ -16,17 +15,17 @@ class Header extends Component {
             <ul class="nav navbar-nav text-center">
               <li class="nav-item">
                 <a class="nav-link" rel="tooltip" title="Blocks" data-placement="bottom" href="./blocks.html">
-                  <img width="33px" src="./assets/img/blocks.svg"/>
+                  <img width="33px" src="./assets/img/blocks.svg" alt="" />
                 </a>
               </li>
               <li class="nav-item">
                 <a class="nav-link" rel="tooltip" title="Operations" data-placement="bottom" href="./operations.html">
-                  <img width="35px" src="./assets/img/list.svg"/>
+                  <img width="35px" src="./assets/img/list.svg" alt="" />
                 </a>
               </li>
               <li class="nav-item">
                 <a class="nav-link" rel="tooltip" title="Witnesses" data-placement="bottom" href="./witnesses.html">
-                  <img width="40px" src="./assets/img/mascot.svg"/>
+                  <img width="40px" src="./assets/img/mascot.svg" alt="" />
                 </a>
               </li>
               <li class="nav-item">

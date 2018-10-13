@@ -1,5 +1,4 @@
 import React, {Component} from 'react';
-import {Link} from 'react-router-dom';
 
 class Dashboard extends Component {
   render() {
@@ -13,7 +12,7 @@ class Dashboard extends Component {
               <div className="card">
 
                 <div className="global-stats-header">
-                  <img width="50px" src="./assets/img/smoke.svg"/>
+                  <img width="50px" src="./assets/img/smoke.svg" alt="" />
                   <span className="market-heading">MARKET CAP OF $1.3 MILLION</span>
                   <div className="pull-right" data-toggle="tooltip" data-placement="top" title=""
                        data-container="body"
@@ -33,11 +32,11 @@ class Dashboard extends Component {
                 <div className="row">
                   <div className="col-6 col-auto media-heading wallet-left">
                     <h5>TOTAL</h5>
-                    <h6> 42,305,029 <img width="20px" src="./assets/img/smoke.svg"/></h6>
+                    <h6> 42,305,029 <img width="20px" src="./assets/img/smoke.svg" alt="" /></h6>
                   </div>
                   <div className="col-6 col-auto media-heading wallet-right">
                     <h5>CIRCULATING</h5>
-                    <h6> 15,935,939 <img width="20px" src="./assets/img/smoke.svg"/></h6>
+                    <h6> 15,935,939 <img width="20px" src="./assets/img/smoke.svg" alt="" /></h6>
                   </div>
                 </div>
                 <hr/>
@@ -45,11 +44,11 @@ class Dashboard extends Component {
                 <div className="row middle-stats">
                   <div className="col-6 col-auto media-heading wallet-left">
                     <h5>REWARD FUND</h5>
-                    <h6> 42,305,029 <img width="20px" src="./assets/img/smoke.svg"/></h6>
+                    <h6> 42,305,029 <img width="20px" src="./assets/img/smoke.svg" alt="" /></h6>
                   </div>
                   <div className="col-6 col-auto media-heading wallet-right">
                     <h5>ACCOUNTS</h5>
-                    <h6> 2552 <img width="20px" src="./assets/img/mascot.svg"/></h6>
+                    <h6> 2552 <img width="20px" src="./assets/img/mascot.svg" alt="" /></h6>
                   </div>
                 </div>
                 <hr/>
@@ -89,13 +88,13 @@ class Dashboard extends Component {
 
                 <div className="scroll-box">
                   <div className="block-element">
-                    <a data-toggle="modal" data-target="#blockModal" className="block-date">
+                    <a href="###" data-toggle="modal" data-target="#blockModal" className="block-date">
                       <h5 className="block">BLOCK 425292</h5>
                       <h6> 3 secs ago</h6>
                     </a>
                     <div className="block-data">
                       <h5 className="block">Mined By <a href="https://smoke.io/{witness}"
-                                                        target="_blank">@blackman</a></h5>
+                                                        target="_blank" rel="noopener noreferrer">@blackman</a></h5>
                       <h6 className="block-middle"> 4 operations</h6>
                       <h6 className='text-muted'> Block Reward 0.34 SMOKE </h6>
                     </div>
@@ -115,12 +114,12 @@ class Dashboard extends Component {
                   <div className="op-element">
 
                     <div className="op-icon">
-                      <a data-toggle="modal" data-target="#opsModal">
-                        <img width="25px" src="./assets/img/checked.svg"/>
+                      <a href="###" data-toggle="modal" data-target="#opsModal">
+                        <img width="25px" src="./assets/img/checked.svg" alt="" />
                       </a>
                     </div>
                     <div className="op-data">
-                      <h5 className="op">TX# <a data-toggle="modal" data-target="#opsModal">358958983539...</a></h5>
+                      <h5 className="op">TX# <a href="###" data-toggle="modal" data-target="#opsModal">358958983539...</a></h5>
                       <h6 className='text-muted'> Block 425292 </h6>
                     </div>
                     <div className="op-right">
