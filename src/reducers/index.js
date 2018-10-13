@@ -7,6 +7,7 @@ import Immutable from "immutable";
 export const app = (
   state = (() => {
     let initialState = {
+      initing: false
     };
     return initialState;
   })(),
@@ -30,6 +31,7 @@ export const app = (
 export const dashboard = (
   state = (() => {
     let initialState = {
+      initing: false
     };
     return initialState;
   })(),

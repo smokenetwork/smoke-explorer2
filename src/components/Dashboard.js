@@ -1,9 +1,37 @@
 import React, {Component} from 'react';
 import {connect} from "react-redux";
 import {withRouter} from "react-router";
+import * as actions from "../reducers/actions";
 
 class Dashboard extends Component {
+  constructor(props) {
+    super(props);
+
+    this.props.dashboard_init();
+  };
+
   render() {
+    if (this.props.initing) {
+      return (
+        <div className="projects maximizer title">
+          <div className="container">
+            <div className="row top-margin">
+              <div className="col-sm-12 col-md-10 ml-auto mr-auto card card-profile card-plain">
+                <div className="card">
+                  <div className="ml-auto mr-auto text-center">
+
+                    <h2 className="title">Initing</h2>
+                    <p className="description">Dashboard initing...</p>
+
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      );
+    }
+
     return (
       <div className="projects maximizer title">
         <div className="container">
@@ -50,7 +78,7 @@ class Dashboard extends Component {
                   </div>
                   <div className="col-6 col-auto media-heading wallet-right">
                     <h5>ACCOUNTS</h5>
-                    <h6> 2552 <img width="20px" src="./assets/img/mascot.svg" alt="" /></h6>
+                    <h6>{this.props.account_count} <img width="20px" src="./assets/img/mascot.svg" alt="" /></h6>
                   </div>
                 </div>
                 <hr/>
@@ -58,7 +86,7 @@ class Dashboard extends Component {
                 <div className="row">
                   <div className="col-6 col-auto media-heading wallet-left">
                     <h4>LAST BLOCK</h4>
-                    <h6> 420529<span className="text-muted"> {'(3s)'}</span></h6>
+                    <h6>{this.props.head_block_number}<span className="text-muted"> {'(3s)'}</span></h6>
                   </div>
                   <div className="col-6 col-auto media-heading wallet-right">
                     <h4>OPERATIONS</h4>
@@ -142,11 +170,32 @@ class Dashboard extends Component {
 
 export default withRouter(connect(
   (state, ownProps) => {
+
+    let head_block_number = 0;
+    const {gpros} = state.app;
+    if (gpros) {
+      head_block_number = gpros.head_block_number;
+    }
+
     return {
       ...ownProps,
-      ...state.dashboard
+      ...state.dashboard,
+      head_block_number
     };
   },
   {
+    dashboard_init: () => async (dispatch, getState) => {
+      try {
+        dispatch(actions.setIn('dashboard', ['initing'], true));
+        // await actions.sleep(5000);
+
+        const account_count = await actions.get_chainLib().api.getAccountCountAsync();
+        dispatch(actions.setIn('dashboard', ['account_count'], account_count));
+      } catch (e) {
+        console.log(e);
+      } finally {
+        dispatch(actions.setIn('dashboard', ['initing'], false));
+      }
+    }
   }
 )(Dashboard));
