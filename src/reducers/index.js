@@ -32,6 +32,7 @@ export const dashboard = (
   state = (() => {
     let initialState = {
       initing: false,
+      inited: false,
       gpros: false,         // DynamicGlobalProperties
       __current_block: 0,
       blocks: [],

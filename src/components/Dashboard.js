@@ -10,8 +10,14 @@ class Dashboard extends Component {
   constructor(props) {
     super(props);
 
-    this.props.dashboard_init();
+    if (!this.props.inited) {
+      this.props.dashboard_init();
+    }
   };
+
+  // componentDidMount() {
+  //
+  // };
 
   render() {
     if (this.props.initing) {
@@ -66,7 +72,10 @@ class Dashboard extends Component {
 }
 
 const dashboard_init = () => async (dispatch, getState) => {
+  console.log("dashboard_init");
+
   try {
+    dispatch(actions.setIn('dashboard', ['inited'], true));
     dispatch(actions.setIn('dashboard', ['initing'], true));
     // await actions.sleep(5000);
 
@@ -113,7 +122,7 @@ const dashboard_fetch_block = (block_num) => async (dispatch, getState) => {
     block.block_number = block_num;
     let { blocks, operations } = getState().dashboard;
     // blocks.push(block_header);
-    blocks = [block,...blocks].slice(0, 20);
+    blocks = [block,...blocks].slice(0, 10);
 
     // fetch operations
     const txs = block.transactions;
@@ -134,7 +143,7 @@ const dashboard_fetch_block = (block_num) => async (dispatch, getState) => {
       }
     }
 
-    operations = operations.slice(0, 20);
+    operations = operations.slice(0, 10);
 
     dispatch(actions.setIn('dashboard', ['blocks'], blocks));
     dispatch(actions.setIn('dashboard', ['operations'], operations));
