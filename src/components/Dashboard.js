@@ -1,4 +1,6 @@
 import React, {Component} from 'react';
+import {connect} from "react-redux";
+import {withRouter} from "react-router";
 
 class Dashboard extends Component {
   render() {
@@ -138,4 +140,13 @@ class Dashboard extends Component {
   }
 }
 
-export default Dashboard;
+export default withRouter(connect(
+  (state, ownProps) => {
+    return {
+      ...ownProps,
+      ...state.dashboard
+    };
+  },
+  {
+  }
+)(Dashboard));

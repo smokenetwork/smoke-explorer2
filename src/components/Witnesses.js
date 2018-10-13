@@ -1,4 +1,6 @@
 import React, {Component} from 'react';
+import {connect} from "react-redux";
+import {withRouter} from "react-router";
 
 class Witnesses extends Component {
   render() {
@@ -103,4 +105,14 @@ class Witnesses extends Component {
   }
 }
 
-export default Witnesses;
+export default withRouter(connect(
+  (state, ownProps) => {
+    return {
+      ...ownProps,
+      ...state.witnesses
+    };
+  },
+  {
+  }
+)(Witnesses));
+

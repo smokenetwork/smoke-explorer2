@@ -1,4 +1,6 @@
 import React, {Component} from 'react';
+import {connect} from "react-redux";
+import {withRouter} from "react-router";
 
 class Operations extends Component {
   render() {
@@ -40,4 +42,13 @@ class Operations extends Component {
   }
 }
 
-export default Operations;
+export default withRouter(connect(
+  (state, ownProps) => {
+    return {
+      ...ownProps,
+      ...state.operations
+    };
+  },
+  {
+  }
+)(Operations));

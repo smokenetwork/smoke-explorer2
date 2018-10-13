@@ -1,4 +1,6 @@
 import React, {Component} from 'react';
+import {connect} from "react-redux";
+import {withRouter} from "react-router";
 
 class Blocks extends Component {
   render() {
@@ -330,4 +332,13 @@ class Blocks extends Component {
   }
 }
 
-export default Blocks;
+export default withRouter(connect(
+  (state, ownProps) => {
+    return {
+      ...ownProps,
+      ...state.blocks
+    };
+  },
+  {
+  }
+)(Blocks));

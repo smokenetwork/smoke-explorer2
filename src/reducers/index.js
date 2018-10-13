@@ -49,11 +49,83 @@ export const dashboard = (
 };
 
 ////////////////////////////////////////////////////////////////////////////////
+// blocks
+export const blocks = (
+  state = (() => {
+    let initialState = {
+    };
+    return initialState;
+  })(),
+  action) => {
+  let immState = Immutable.fromJS(state); // converting to an immutable object
+  if (action.reducer !== `blocks`) {
+    return immState.toJS();
+  }
+  switch (action.type) {
+    case 'merge':
+      return immState.merge(action.obj).toJS();
+    case 'setIn':
+      return immState.setIn(action.arr, action.value).toJS();
+    default:
+      return immState.toJS();
+  }
+};
+
+////////////////////////////////////////////////////////////////////////////////
+// operations
+export const operations = (
+  state = (() => {
+    let initialState = {
+    };
+    return initialState;
+  })(),
+  action) => {
+  let immState = Immutable.fromJS(state); // converting to an immutable object
+  if (action.reducer !== `operations`) {
+    return immState.toJS();
+  }
+  switch (action.type) {
+    case 'merge':
+      return immState.merge(action.obj).toJS();
+    case 'setIn':
+      return immState.setIn(action.arr, action.value).toJS();
+    default:
+      return immState.toJS();
+  }
+};
+
+////////////////////////////////////////////////////////////////////////////////
+// witnesses
+export const witnesses = (
+  state = (() => {
+    let initialState = {
+    };
+    return initialState;
+  })(),
+  action) => {
+  let immState = Immutable.fromJS(state); // converting to an immutable object
+  if (action.reducer !== `witnesses`) {
+    return immState.toJS();
+  }
+  switch (action.type) {
+    case 'merge':
+      return immState.merge(action.obj).toJS();
+    case 'setIn':
+      return immState.setIn(action.arr, action.value).toJS();
+    default:
+      return immState.toJS();
+  }
+};
+
+////////////////////////////////////////////////////////////////////////////////
 //
 
 export const rootReducer = combineReducers({
   app,
-  dashboard
+  dashboard,
+  blocks,
+  operations,
+  witnesses
 });
 
 // store.js
