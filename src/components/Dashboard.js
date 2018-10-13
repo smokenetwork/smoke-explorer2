@@ -65,7 +65,6 @@ class Dashboard extends Component {
   }
 }
 
-
 const dashboard_init = () => async (dispatch, getState) => {
   try {
     dispatch(actions.setIn('dashboard', ['initing'], true));
@@ -108,12 +107,13 @@ const dashboard_fetch_gpo = () => async (dispatch, getState) => {
 
 const dashboard_fetch_block = (block_num) => async (dispatch, getState) => {
   try {
-    const block_header = await actions.get_chainLib().api.getBlockHeaderAsync(block_num);
+    // const block_header = await actions.get_chainLib().api.getBlockHeaderAsync(block_num);
     // dispatch(actions.setIn('dashboard', ['block_header'], block_header));
-
+    let block = await actions.get_chainLib().api.getBlockAsync(block_num);
+    block.block_number = block_num;
     let { blocks } = getState().dashboard;
     // blocks.push(block_header);
-    blocks = [block_header,...blocks].slice(0, 20);
+    blocks = [block,...blocks].slice(0, 20);
 
     dispatch(actions.setIn('dashboard', ['blocks'], blocks));
   } catch (e) {
