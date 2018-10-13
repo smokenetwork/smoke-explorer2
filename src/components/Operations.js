@@ -4,6 +4,24 @@ import {withRouter} from "react-router";
 
 class Operations extends Component {
   render() {
+
+    const render_operations = this.props.operations.map((operation, idx) => {
+      // const new_opt = {
+      //   tx_id: txs.transaction_ids[i],
+      //   type: opt[0],
+      //   timestamp: block.timestamp,
+      //   block_number: block_num
+      // };
+
+      return (
+        <tr key={`opt_${idx}`} data-toggle="modal" data-target="#opsModal" className="block-date  pointer">
+          <td><span className="text-muted">{operation.tx_id}</span></td>
+          <td><span className="text-muted">{operation.timestamp}</span></td>
+          <td>{operation.type}</td>
+        </tr>
+      );
+    });
+
     return (
       <div className="projects maximizer title">
         <div className="container">
@@ -22,13 +40,7 @@ class Operations extends Component {
                     </tr>
                     </thead>
                     <tbody id="lazylist">
-
-                    <tr data-toggle="modal" data-target="#opsModal" className="block-date  pointer">
-                      <td><span className="text-muted">1324225</span></td>
-                      <td><span className="text-muted">12/10/18 6:45 AM</span></td>
-                      <td>Transfer</td>
-                    </tr>
-
+                    {render_operations}
                     </tbody>
                   </table>
 
@@ -44,9 +56,12 @@ class Operations extends Component {
 
 export default withRouter(connect(
   (state, ownProps) => {
+
+    const { operations } = state.dashboard;
+
     return {
       ...ownProps,
-      ...state.operations
+      operations
     };
   },
   {

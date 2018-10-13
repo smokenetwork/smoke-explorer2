@@ -12,7 +12,7 @@ class Blocks extends Component {
       }
 
       return (
-        <tr data-toggle="modal" data-target="#blockModal" className="block-date pointer">
+        <tr key={`block_${block.block_number}`} data-toggle="modal" data-target="#blockModal" className="block-date pointer">
           <td><span className="text-muted">{block.block_number}</span></td>
           <td><span className="text-muted">{block.timestamp}</span></td>
           <td><span className="text-muted">{block.block_id}</span></td>
