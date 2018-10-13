@@ -10,6 +10,7 @@ import Operations from "./components/Operations";
 import Witnesses from "./components/Witnesses";
 import './App.css';
 import * as actions from './reducers/actions';
+import {dashboard_init} from './components/Dashboard';
 
 class App extends Component {
   constructor(props) {
@@ -61,6 +62,8 @@ const app_init = () => async (dispatch, getState) => {
   try {
     dispatch(actions.setIn('app', ['initing'], true));
     // await actions.sleep(2000);
+
+    dispatch(dashboard_init());
   } catch (e) {
     console.log(e);
   } finally {

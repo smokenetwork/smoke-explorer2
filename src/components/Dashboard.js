@@ -10,9 +10,9 @@ class Dashboard extends Component {
   constructor(props) {
     super(props);
 
-    if (!this.props.inited) {
-      this.props.dashboard_init();
-    }
+    // if (!this.props.inited) {
+    //   this.props.dashboard_init();
+    // }
   };
 
   // componentDidMount() {
@@ -47,7 +47,12 @@ class Dashboard extends Component {
 
           <div className="row top-margin">
             <div className="col-sm-12 col-md-6 ml-auto mr-auto card card-profile card-plain">
-              <GlobalStatsWidget {...this.props} />
+              <GlobalStatsWidget
+                current_supply={this.props.current_supply}
+                circulating_supply={this.props.circulating_supply}
+                post_reward_balance={this.props.post_reward_balance}
+                head_block_number={this.props.head_block_number}
+              />
             </div>
             <div className="col-sm-12 col-md-6 ml-auto mr-auto card card-profile card-plain">
               <div className="card">
@@ -71,10 +76,14 @@ class Dashboard extends Component {
   }
 }
 
-const dashboard_init = () => async (dispatch, getState) => {
+export const dashboard_init = () => async (dispatch, getState) => {
   console.log("dashboard_init");
 
   try {
+    if (getState().dashboard.inited) {
+      return;
+    }
+
     dispatch(actions.setIn('dashboard', ['inited'], true));
     dispatch(actions.setIn('dashboard', ['initing'], true));
     // await actions.sleep(5000);
