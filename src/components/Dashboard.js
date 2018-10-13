@@ -56,7 +56,7 @@ class Dashboard extends Component {
               <BlocksWidget blocks={this.props.blocks} />
             </div>
             <div className="col-sm-12 col-md-6 ml-auto mr-auto card card-profile card-plain">
-              <OperationsWidget />
+              <OperationsWidget operations={this.props.operations} />
             </div>
           </div>
         </div>
@@ -111,11 +111,33 @@ const dashboard_fetch_block = (block_num) => async (dispatch, getState) => {
     // dispatch(actions.setIn('dashboard', ['block_header'], block_header));
     let block = await actions.get_chainLib().api.getBlockAsync(block_num);
     block.block_number = block_num;
-    let { blocks } = getState().dashboard;
+    let { blocks, operations } = getState().dashboard;
     // blocks.push(block_header);
     blocks = [block,...blocks].slice(0, 20);
 
+    // fetch operations
+    const txs = block.transactions;
+
+    for (let i=0; i<txs.length; i++) { // for (const tx of txs) {
+      const tx = txs[i];
+      for (let opt of tx.operations) {
+        // console.log(JSON.stringify(opt));
+        // console.log(JSON.stringify(txs));
+        const new_opt = {
+          tx_id: block.transaction_ids[i],
+          type: opt[0],
+          timestamp: block.timestamp,
+          block_number: block_num
+        };
+
+        operations = [new_opt,...operations];
+      }
+    }
+
+    operations = operations.slice(0, 20);
+
     dispatch(actions.setIn('dashboard', ['blocks'], blocks));
+    dispatch(actions.setIn('dashboard', ['operations'], operations));
   } catch (e) {
     console.log(e);
   } finally {

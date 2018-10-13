@@ -1,7 +1,39 @@
 import React, {Component} from 'react';
+import PropTypes from "prop-types";
 
 class OperationsWidget extends Component {
   render() {
+
+    const render_operations = this.props.operations.map((operation, idx) => {
+      // const new_opt = {
+      //   tx_id: txs.transaction_ids[i],
+      //   type: opt[0],
+      //   timestamp: block.timestamp,
+      //   block_number: block_num
+      // };
+
+      const secs_ago = Math.floor(((new Date()).getTime() - (new Date(operation.timestamp + '.000Z')).getTime()) / 1000);
+
+      return (
+        <div key={`operation_${idx}`} className="op-element">
+
+          <div className="op-icon">
+            <a href="###" data-toggle="modal" data-target="#opsModal">
+              <img width="25px" src="./assets/img/checked.svg" alt="" />
+            </a>
+          </div>
+          <div className="op-data">
+            <h5 className="op">TX# <a href="###" data-toggle="modal" data-target="#opsModal">{operation.tx_id}</a></h5>
+            <h6 className='text-muted'> Block {operation.block_number}</h6>
+          </div>
+          <div className="op-right">
+            <h5 className="op">{secs_ago} sec ago </h5>
+            <h6 className="block-middle">{operation.type}</h6>
+          </div>
+        </div>
+      );
+    });
+
     return (
       <div className="card">
         <div className="block-stats-header">OPERATIONS
@@ -10,26 +42,16 @@ class OperationsWidget extends Component {
           </div>
         </div>
         <div className="scroll-box">
-          <div className="op-element">
-
-            <div className="op-icon">
-              <a href="###" data-toggle="modal" data-target="#opsModal">
-                <img width="25px" src="./assets/img/checked.svg" alt="" />
-              </a>
-            </div>
-            <div className="op-data">
-              <h5 className="op">TX# <a href="###" data-toggle="modal" data-target="#opsModal">358958983539...</a></h5>
-              <h6 className='text-muted'> Block 425292 </h6>
-            </div>
-            <div className="op-right">
-              <h5 className="op"> 8 sec ago </h5>
-              <h6 className="block-middle"> Transfer</h6>
-            </div>
-          </div>
+          {render_operations}
         </div>
       </div>
     );
   }
 }
+
+OperationsWidget.propTypes = {
+  operations: PropTypes.array.isRequired
+};
+
 
 export default OperationsWidget;

@@ -34,7 +34,8 @@ export const dashboard = (
       initing: false,
       gpros: false,         // DynamicGlobalProperties
       __current_block: 0,
-      blocks: []
+      blocks: [],
+      operations: []
     };
     return initialState;
   })(),
