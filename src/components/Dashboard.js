@@ -150,7 +150,11 @@ const dashboard_auto_fetch = () => async (dispatch, getState) => {
       // await actions.sleep(30000);
       // dispatch(dashboard_fetch_gpo());
 
-      let {gpros, __current_block} = getState().dashboard;
+      let {auto_fetching, gpros, __current_block} = getState().dashboard;
+
+      if (auto_fetching) {
+        return;
+      }
 
       if (__current_block <= 0) {
         __current_block = gpros.head_block_number;
@@ -166,6 +170,8 @@ const dashboard_auto_fetch = () => async (dispatch, getState) => {
         await actions.sleep(1000);
       }
 
+      dispatch(actions.setIn('dashboard', ['auto_fetching'], false));
+      await actions.sleep(500);
       dispatch(dashboard_fetch_gpo());
       await actions.sleep(1000);
     } catch (e) {
