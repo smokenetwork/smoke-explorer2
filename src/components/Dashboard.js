@@ -18,7 +18,7 @@ class Dashboard extends Component {
                        data-container="body"
                        data-animation="true" data-original-title="Toggle Realtime Updates">
                     <input type="checkbox" name="checkbox" className="bootstrap-switch"
-                           data-on-label="ON" data-off-label="OFF" checked/>
+                           data-on-label="ON" data-off-label="OFF" />
                   </div>
                   <div className="price">
                     <h6>$0.13<span className="price-up">(+3.2%) <i className="fa fa-chevron-up"></i></span> @
