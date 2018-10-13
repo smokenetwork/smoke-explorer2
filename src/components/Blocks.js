@@ -4,6 +4,23 @@ import {withRouter} from "react-router";
 
 class Blocks extends Component {
   render() {
+    const render_blocks = this.props.blocks.map((block, idx) => {
+      let opt_count = 0;
+      const txs = block.transactions;
+      for (const tx of txs) {
+        opt_count += tx.operations.length;
+      }
+
+      return (
+        <tr data-toggle="modal" data-target="#blockModal" className="block-date pointer">
+          <td><span className="text-muted">{block.block_number}</span></td>
+          <td><span className="text-muted">{block.timestamp}</span></td>
+          <td><span className="text-muted">{block.block_id}</span></td>
+          <td>{opt_count}</td>
+        </tr>
+      )
+    });
+
     return (
       <div className="projects maximizer title">
         <div className="container">
@@ -23,302 +40,7 @@ class Blocks extends Component {
                     </tr>
                     </thead>
                     <tbody id="lazylist">
-                    <tr data-toggle="modal" data-target="#blockModal" className="block-date pointer">
-                      <td><span className="text-muted">5764591</span></td>
-                      <td><span className="text-muted">12/10/18 6:45 AM</span></td>
-                      <td><span className="text-muted">0057f...</span></td>
-                      <td>1</td>
-                    </tr>
-
-                    <tr data-toggle="modal" data-target="#blockModal" className="block-date pointer">
-                      <td><span className="text-muted">5764591</span></td>
-                      <td><span className="text-muted">12/10/18 6:45 AM</span></td>
-                      <td><span className="text-muted">0057f...</span></td>
-                      <td>1</td>
-                    </tr>
-                    <tr data-toggle="modal" data-target="#blockModal" className="block-date pointer">
-                      <td><span className="text-muted">5764591</span></td>
-                      <td><span className="text-muted">12/10/18 6:45 AM</span></td>
-                      <td><span className="text-muted">0057f...</span></td>
-                      <td>1</td>
-                    </tr>
-                    <tr data-toggle="modal" data-target="#blockModal" className="block-date pointer">
-                      <td><span className="text-muted">5764591</span></td>
-                      <td><span className="text-muted">12/10/18 6:45 AM</span></td>
-                      <td><span className="text-muted">0057f...</span></td>
-                      <td>1</td>
-                    </tr>
-                    <tr data-toggle="modal" data-target="#blockModal" className="block-date pointer">
-                      <td><span className="text-muted">5764591</span></td>
-                      <td><span className="text-muted">12/10/18 6:45 AM</span></td>
-                      <td><span className="text-muted">0057f...</span></td>
-                      <td>1</td>
-                    </tr>
-                    <tr data-toggle="modal" data-target="#blockModal" className="block-date pointer">
-                      <td><span className="text-muted">5764591</span></td>
-                      <td><span className="text-muted">12/10/18 6:45 AM</span></td>
-                      <td><span className="text-muted">0057f...</span></td>
-                      <td>1</td>
-                    </tr>
-                    <tr data-toggle="modal" data-target="#blockModal" className="block-date pointer">
-                      <td><span className="text-muted">5764591</span></td>
-                      <td><span className="text-muted">12/10/18 6:45 AM</span></td>
-                      <td><span className="text-muted">0057f...</span></td>
-                      <td>1</td>
-                    </tr>
-                    <tr data-toggle="modal" data-target="#blockModal" className="block-date pointer">
-                      <td><span className="text-muted">5764591</span></td>
-                      <td><span className="text-muted">12/10/18 6:45 AM</span></td>
-                      <td><span className="text-muted">0057f...</span></td>
-                      <td>1</td>
-                    </tr>
-                    <tr data-toggle="modal" data-target="#blockModal" className="block-date pointer">
-                      <td><span className="text-muted">5764591</span></td>
-                      <td><span className="text-muted">12/10/18 6:45 AM</span></td>
-                      <td><span className="text-muted">0057f...</span></td>
-                      <td>1</td>
-                    </tr>
-                    <tr data-toggle="modal" data-target="#blockModal" className="block-date pointer">
-                      <td><span className="text-muted">5764591</span></td>
-                      <td><span className="text-muted">12/10/18 6:45 AM</span></td>
-                      <td><span className="text-muted">0057f...</span></td>
-                      <td>1</td>
-                    </tr>
-                    <tr data-toggle="modal" data-target="#blockModal" className="block-date pointer">
-                      <td><span className="text-muted">5764591</span></td>
-                      <td><span className="text-muted">12/10/18 6:45 AM</span></td>
-                      <td><span className="text-muted">0057f...</span></td>
-                      <td>1</td>
-                    </tr>
-                    <tr data-toggle="modal" data-target="#blockModal" className="block-date pointer">
-                      <td><span className="text-muted">5764591</span></td>
-                      <td><span className="text-muted">12/10/18 6:45 AM</span></td>
-                      <td><span className="text-muted">0057f...</span></td>
-                      <td>1</td>
-                    </tr>
-                    <tr data-toggle="modal" data-target="#blockModal" className="block-date pointer">
-                      <td><span className="text-muted">5764591</span></td>
-                      <td><span className="text-muted">12/10/18 6:45 AM</span></td>
-                      <td><span className="text-muted">0057f...</span></td>
-                      <td>1</td>
-                    </tr>
-                    <tr data-toggle="modal" data-target="#blockModal" className="block-date pointer">
-                      <td><span className="text-muted">5764591</span></td>
-                      <td><span className="text-muted">12/10/18 6:45 AM</span></td>
-                      <td><span className="text-muted">0057f...</span></td>
-                      <td>1</td>
-                    </tr>
-                    <tr data-toggle="modal" data-target="#blockModal" className="block-date pointer">
-                      <td><span className="text-muted">5764591</span></td>
-                      <td><span className="text-muted">12/10/18 6:45 AM</span></td>
-                      <td><span className="text-muted">0057f...</span></td>
-                      <td>1</td>
-                    </tr>
-                    <tr data-toggle="modal" data-target="#blockModal" className="block-date pointer">
-                      <td><span className="text-muted">5764591</span></td>
-                      <td><span className="text-muted">12/10/18 6:45 AM</span></td>
-                      <td><span className="text-muted">0057f...</span></td>
-                      <td>1</td>
-                    </tr>
-                    <tr data-toggle="modal" data-target="#blockModal" className="block-date pointer">
-                      <td><span className="text-muted">5764591</span></td>
-                      <td><span className="text-muted">12/10/18 6:45 AM</span></td>
-                      <td><span className="text-muted">0057f...</span></td>
-                      <td>1</td>
-                    </tr>
-                    <tr data-toggle="modal" data-target="#blockModal" className="block-date pointer">
-                      <td><span className="text-muted">5764591</span></td>
-                      <td><span className="text-muted">12/10/18 6:45 AM</span></td>
-                      <td><span className="text-muted">0057f...</span></td>
-                      <td>1</td>
-                    </tr>
-                    <tr data-toggle="modal" data-target="#blockModal" className="block-date pointer">
-                      <td><span className="text-muted">5764591</span></td>
-                      <td><span className="text-muted">12/10/18 6:45 AM</span></td>
-                      <td><span className="text-muted">0057f...</span></td>
-                      <td>1</td>
-                    </tr>
-                    <tr data-toggle="modal" data-target="#blockModal" className="block-date pointer">
-                      <td><span className="text-muted">5764591</span></td>
-                      <td><span className="text-muted">12/10/18 6:45 AM</span></td>
-                      <td><span className="text-muted">0057f...</span></td>
-                      <td>1</td>
-                    </tr>
-                    <tr data-toggle="modal" data-target="#blockModal" className="block-date pointer">
-                      <td><span className="text-muted">5764591</span></td>
-                      <td><span className="text-muted">12/10/18 6:45 AM</span></td>
-                      <td><span className="text-muted">0057f...</span></td>
-                      <td>1</td>
-                    </tr>
-                    <tr data-toggle="modal" data-target="#blockModal" className="block-date pointer">
-                      <td><span className="text-muted">5764591</span></td>
-                      <td><span className="text-muted">12/10/18 6:45 AM</span></td>
-                      <td><span className="text-muted">0057f...</span></td>
-                      <td>1</td>
-                    </tr>
-                    <tr data-toggle="modal" data-target="#blockModal" className="block-date pointer">
-                      <td><span className="text-muted">5764591</span></td>
-                      <td><span className="text-muted">12/10/18 6:45 AM</span></td>
-                      <td><span className="text-muted">0057f...</span></td>
-                      <td>1</td>
-                    </tr>
-                    <tr data-toggle="modal" data-target="#blockModal" className="block-date pointer">
-                      <td><span className="text-muted">5764591</span></td>
-                      <td><span className="text-muted">12/10/18 6:45 AM</span></td>
-                      <td><span className="text-muted">0057f...</span></td>
-                      <td>1</td>
-                    </tr>
-                    <tr data-toggle="modal" data-target="#blockModal" className="block-date pointer">
-                      <td><span className="text-muted">5764591</span></td>
-                      <td><span className="text-muted">12/10/18 6:45 AM</span></td>
-                      <td><span className="text-muted">0057f...</span></td>
-                      <td>1</td>
-                    </tr>
-                    <tr data-toggle="modal" data-target="#blockModal" className="block-date pointer">
-                      <td><span className="text-muted">5764591</span></td>
-                      <td><span className="text-muted">12/10/18 6:45 AM</span></td>
-                      <td><span className="text-muted">0057f...</span></td>
-                      <td>1</td>
-                    </tr>
-                    <tr data-toggle="modal" data-target="#blockModal" className="block-date pointer">
-                      <td><span className="text-muted">5764591</span></td>
-                      <td><span className="text-muted">12/10/18 6:45 AM</span></td>
-                      <td><span className="text-muted">0057f...</span></td>
-                      <td>1</td>
-                    </tr>
-                    <tr data-toggle="modal" data-target="#blockModal" className="block-date pointer">
-                      <td><span className="text-muted">5764591</span></td>
-                      <td><span className="text-muted">12/10/18 6:45 AM</span></td>
-                      <td><span className="text-muted">0057f...</span></td>
-                      <td>1</td>
-                    </tr>
-                    <tr data-toggle="modal" data-target="#blockModal" className="block-date pointer">
-                      <td><span className="text-muted">5764591</span></td>
-                      <td><span className="text-muted">12/10/18 6:45 AM</span></td>
-                      <td><span className="text-muted">0057f...</span></td>
-                      <td>1</td>
-                    </tr>
-                    <tr data-toggle="modal" data-target="#blockModal" className="block-date pointer">
-                      <td><span className="text-muted">5764591</span></td>
-                      <td><span className="text-muted">12/10/18 6:45 AM</span></td>
-                      <td><span className="text-muted">0057f...</span></td>
-                      <td>1</td>
-                    </tr>
-                    <tr data-toggle="modal" data-target="#blockModal" className="block-date pointer">
-                      <td><span className="text-muted">5764591</span></td>
-                      <td><span className="text-muted">12/10/18 6:45 AM</span></td>
-                      <td><span className="text-muted">0057f...</span></td>
-                      <td>1</td>
-                    </tr>
-                    <tr data-toggle="modal" data-target="#blockModal" className="block-date pointer">
-                      <td><span className="text-muted">5764591</span></td>
-                      <td><span className="text-muted">12/10/18 6:45 AM</span></td>
-                      <td><span className="text-muted">0057f...</span></td>
-                      <td>1</td>
-                    </tr>
-                    <tr data-toggle="modal" data-target="#blockModal" className="block-date pointer">
-                      <td><span className="text-muted">5764591</span></td>
-                      <td><span className="text-muted">12/10/18 6:45 AM</span></td>
-                      <td><span className="text-muted">0057f...</span></td>
-                      <td>1</td>
-                    </tr>
-                    <tr data-toggle="modal" data-target="#blockModal" className="block-date pointer">
-                      <td><span className="text-muted">5764591</span></td>
-                      <td><span className="text-muted">12/10/18 6:45 AM</span></td>
-                      <td><span className="text-muted">0057f...</span></td>
-                      <td>1</td>
-                    </tr>
-                    <tr data-toggle="modal" data-target="#blockModal" className="block-date pointer">
-                      <td><span className="text-muted">5764591</span></td>
-                      <td><span className="text-muted">12/10/18 6:45 AM</span></td>
-                      <td><span className="text-muted">0057f...</span></td>
-                      <td>1</td>
-                    </tr>
-                    <tr data-toggle="modal" data-target="#blockModal" className="block-date pointer">
-                      <td><span className="text-muted">5764591</span></td>
-                      <td><span className="text-muted">12/10/18 6:45 AM</span></td>
-                      <td><span className="text-muted">0057f...</span></td>
-                      <td>1</td>
-                    </tr>
-                    <tr data-toggle="modal" data-target="#blockModal" className="block-date pointer">
-                      <td><span className="text-muted">5764591</span></td>
-                      <td><span className="text-muted">12/10/18 6:45 AM</span></td>
-                      <td><span className="text-muted">0057f...</span></td>
-                      <td>1</td>
-                    </tr>
-                    <tr data-toggle="modal" data-target="#blockModal" className="block-date pointer">
-                      <td><span className="text-muted">5764591</span></td>
-                      <td><span className="text-muted">12/10/18 6:45 AM</span></td>
-                      <td><span className="text-muted">0057f...</span></td>
-                      <td>1</td>
-                    </tr>
-                    <tr data-toggle="modal" data-target="#blockModal" className="block-date pointer">
-                      <td><span className="text-muted">5764591</span></td>
-                      <td><span className="text-muted">12/10/18 6:45 AM</span></td>
-                      <td><span className="text-muted">0057f...</span></td>
-                      <td>1</td>
-                    </tr>
-                    <tr data-toggle="modal" data-target="#blockModal" className="block-date pointer">
-                      <td><span className="text-muted">5764591</span></td>
-                      <td><span className="text-muted">12/10/18 6:45 AM</span></td>
-                      <td><span className="text-muted">0057f...</span></td>
-                      <td>1</td>
-                    </tr>
-                    <tr data-toggle="modal" data-target="#blockModal" className="block-date pointer">
-                      <td><span className="text-muted">5764591</span></td>
-                      <td><span className="text-muted">12/10/18 6:45 AM</span></td>
-                      <td><span className="text-muted">0057f...</span></td>
-                      <td>1</td>
-                    </tr>
-                    <tr data-toggle="modal" data-target="#blockModal" className="block-date pointer">
-                      <td><span className="text-muted">5764591</span></td>
-                      <td><span className="text-muted">12/10/18 6:45 AM</span></td>
-                      <td><span className="text-muted">0057f...</span></td>
-                      <td>1</td>
-                    </tr>
-                    <tr data-toggle="modal" data-target="#blockModal" className="block-date pointer">
-                      <td><span className="text-muted">5764591</span></td>
-                      <td><span className="text-muted">12/10/18 6:45 AM</span></td>
-                      <td><span className="text-muted">0057f...</span></td>
-                      <td>1</td>
-                    </tr>
-                    <tr data-toggle="modal" data-target="#blockModal" className="block-date pointer">
-                      <td><span className="text-muted">5764591</span></td>
-                      <td><span className="text-muted">12/10/18 6:45 AM</span></td>
-                      <td><span className="text-muted">0057f...</span></td>
-                      <td>1</td>
-                    </tr>
-                    <tr data-toggle="modal" data-target="#blockModal" className="block-date pointer">
-                      <td><span className="text-muted">5764591</span></td>
-                      <td><span className="text-muted">12/10/18 6:45 AM</span></td>
-                      <td><span className="text-muted">0057f...</span></td>
-                      <td>1</td>
-                    </tr>
-                    <tr data-toggle="modal" data-target="#blockModal" className="block-date pointer">
-                      <td><span className="text-muted">5764591</span></td>
-                      <td><span className="text-muted">12/10/18 6:45 AM</span></td>
-                      <td><span className="text-muted">0057f...</span></td>
-                      <td>1</td>
-                    </tr>
-                    <tr data-toggle="modal" data-target="#blockModal" className="block-date pointer">
-                      <td><span className="text-muted">5764591</span></td>
-                      <td><span className="text-muted">12/10/18 6:45 AM</span></td>
-                      <td><span className="text-muted">0057f...</span></td>
-                      <td>1</td>
-                    </tr>
-                    <tr data-toggle="modal" data-target="#blockModal" className="block-date pointer">
-                      <td><span className="text-muted">5764591</span></td>
-                      <td><span className="text-muted">12/10/18 6:45 AM</span></td>
-                      <td><span className="text-muted">0057f...</span></td>
-                      <td>1</td>
-                    </tr>
-                    <tr data-toggle="modal" data-target="#blockModal" className="block-date pointer">
-                      <td><span className="text-muted">5764591</span></td>
-                      <td><span className="text-muted">12/10/18 6:45 AM</span></td>
-                      <td><span className="text-muted">0057f...</span></td>
-                      <td>1</td>
-                    </tr>
-
+                    {render_blocks}
                     </tbody>
                   </table>
 
@@ -334,9 +56,12 @@ class Blocks extends Component {
 
 export default withRouter(connect(
   (state, ownProps) => {
+
+    const {blocks} = state.dashboard;
+
     return {
       ...ownProps,
-      ...state.blocks
+      blocks
     };
   },
   {
