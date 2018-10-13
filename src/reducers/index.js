@@ -31,7 +31,10 @@ export const app = (
 export const dashboard = (
   state = (() => {
     let initialState = {
-      initing: false
+      initing: false,
+      gpros: false,         // DynamicGlobalProperties
+      __current_block: 0,
+      blocks: []
     };
     return initialState;
   })(),

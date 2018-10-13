@@ -60,44 +60,11 @@ class App extends Component {
 const app_init = () => async (dispatch, getState) => {
   try {
     dispatch(actions.setIn('app', ['initing'], true));
-    // await actions.sleep(5000);
-
-    //
-    const gpros = await actions.get_chainLib().api.getDynamicGlobalPropertiesAsync();
-    dispatch(actions.setIn('app', ['gpros'], gpros));
-
-    //
-    let accounts = await actions.get_chainLib().api.getAccountsAsync(["smoke", "reserve"]);
-    let [smoke, reserve] = accounts;
-    dispatch(actions.setIn('app', ['accounts'], {smoke, reserve}));
-
-    //
-    let post_reward_fund = await actions.get_chainLib().api.getRewardFundAsync("post");
-    dispatch(actions.setIn('app', ['post_reward_fund'], post_reward_fund));
-
-    dispatch(app_auto_fetch());
+    // await actions.sleep(2000);
   } catch (e) {
     console.log(e);
   } finally {
     dispatch(actions.setIn('app', ['initing'], false));
-  }
-};
-
-const app_fetch_gpo = () => async (dispatch, getState) => {
-  try {
-    const gpros = await actions.get_chainLib().api.getDynamicGlobalPropertiesAsync();
-    dispatch(actions.setIn('app', ['gpros'], gpros));
-  } catch (e) {
-    console.log(e);
-  } finally {
-  }
-};
-
-const app_auto_fetch = () => async (dispatch, getState) => {
-  while(true) {
-    await actions.sleep(30000);
-
-    dispatch(app_fetch_gpo());
   }
 };
 
@@ -109,9 +76,7 @@ export default withRouter(connect(
     };
   },
   {
-    app_init,
-    app_fetch_gpo,
-    app_auto_fetch
+    app_init
   }
 )(App));
 
