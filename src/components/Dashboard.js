@@ -62,11 +62,11 @@ class Dashboard extends Component {
                 <div className="row">
                   <div className="col-6 col-auto media-heading wallet-left">
                     <h5>TOTAL</h5>
-                    <h6> 42,305,029 <img width="20px" src="./assets/img/smoke.svg" alt="" /></h6>
+                    <h6>{this.props.current_supply.toFixed(3)} <img width="20px" src="./assets/img/smoke.svg" alt="" /></h6>
                   </div>
                   <div className="col-6 col-auto media-heading wallet-right">
                     <h5>CIRCULATING</h5>
-                    <h6> 15,935,939 <img width="20px" src="./assets/img/smoke.svg" alt="" /></h6>
+                    <h6>{this.props.circulating_supply.toFixed(3)} <img width="20px" src="./assets/img/smoke.svg" alt="" /></h6>
                   </div>
                 </div>
                 <hr/>
@@ -74,7 +74,7 @@ class Dashboard extends Component {
                 <div className="row middle-stats">
                   <div className="col-6 col-auto media-heading wallet-left">
                     <h5>REWARD FUND</h5>
-                    <h6> 42,305,029 <img width="20px" src="./assets/img/smoke.svg" alt="" /></h6>
+                    <h6>{this.props.post_reward_balance.toFixed(3)} <img width="20px" src="./assets/img/smoke.svg" alt="" /></h6>
                   </div>
                   <div className="col-6 col-auto media-heading wallet-right">
                     <h5>ACCOUNTS</h5>
@@ -171,16 +171,30 @@ class Dashboard extends Component {
 export default withRouter(connect(
   (state, ownProps) => {
 
-    let head_block_number = 0;
-    const {gpros} = state.app;
-    if (gpros) {
+    let head_block_number = 0.0;
+    let current_supply = 0.0;
+    let circulating_supply = 0.0;
+    let post_reward_balance = 0.0;
+
+    const {gpros, accounts, post_reward_fund} = state.app;
+    if (gpros && accounts && post_reward_fund) {
       head_block_number = gpros.head_block_number;
+      current_supply = parseFloat(gpros.current_supply.split(" ")[0]);
+
+      const smoke_balance = parseFloat(accounts.smoke.balance.split(" ")[0]);
+      const reserve_balance = parseFloat(accounts.reserve.balance.split(" ")[0]);
+      circulating_supply = current_supply - smoke_balance - reserve_balance;
+
+      post_reward_balance = parseFloat(post_reward_fund.reward_balance.split(" ")[0]);
     }
 
     return {
       ...ownProps,
       ...state.dashboard,
-      head_block_number
+      head_block_number,
+      current_supply,
+      circulating_supply,
+      post_reward_balance
     };
   },
   {
